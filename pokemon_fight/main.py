@@ -1,4 +1,5 @@
 import random
+from time import sleep
 import pokemon as pkmn
 from damage import deal_damage
 
@@ -8,6 +9,8 @@ roster = [pkmn.pikachu, pkmn.mudkip]
 # Create a nice separator
 separator = "--------"
 
+# set sleep time (in seconds) between attacks resolution (it's too fast without it)
+sleep_time = 1
 
 # let the player select one Pokémon out of the roster
 selected_pkmn = None
@@ -27,17 +30,20 @@ while selected_pkmn is None:
         print("Incorrect input")
         selected_pkmn = None
 
-
 # the cpu will pick randomly one pokemon
-
+sleep(sleep_time)
 cpu = random.choice(roster)
-
 print(f"The CPU selected {cpu.name}.")
 
 # main game loop
-
-while player.current_hp > 0 and cpu.current_hp > 0:
+while True:
+    print(separator)
+    # print the current status
+    game_state = f"{player.name}: HP {player.current_hp}/{player.max_hp} {player.status}~~ {cpu.name}: HP {'{:.0%}'.format(cpu.current_hp/cpu.max_hp)}. {cpu.status}"
+    print(game_state)
     # let the player select a move
+    print(separator)
+    sleep(sleep_time)
     player.select_move()
     # the cpu picks its move
     cpu.cpu_select_move()
@@ -54,13 +60,16 @@ while player.current_hp > 0 and cpu.current_hp > 0:
     print(f"{first.name} uses {first.next_move.name}.")
     # deal damage here
     deal_damage(first, last)
+    sleep(sleep_time)
     # check if last is ko, if yes, exit the loop
     if last.current_hp <= 0:
+        print(f"{last.name} is KO. {first.name} won.")
         break
     print(f"{last.name} uses {last.next_move.name}.")
     # deal damage here
     deal_damage(last, first)
+    sleep(sleep_time)
     # check if first is ko, if yes, exit the loop
     if first.current_hp <= 0:
+        print(f"{first.name} is KO. {last.name} won.")
         break
-    print(separator)
