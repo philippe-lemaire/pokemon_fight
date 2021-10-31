@@ -79,4 +79,6 @@ while True:
     if first.current_hp <= 0:
         print(f"{first.name} is KO. {last.name} won.")
         break
-    print("Thank you for playing. Good bye.")
+
+print("")
+print("Thank you for playing. Good bye.")
