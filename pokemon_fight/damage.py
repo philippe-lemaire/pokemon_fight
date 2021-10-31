@@ -21,12 +21,18 @@ def deal_damage(attacker, target):
 
     # damage formula
     damage = int(attack_power * (1 - defense_power / 200))
+
     # check for accuracy if the attack missed, we return something here to skip the rest of the function.
     # We have no real value to return, so we can just return None
     roll = randint(1, 100)
     if roll > move.accuracy:
         print(f"{attacker.name} missed.")
         return None
+
+    # check for random chance of crit. It's a 5% chance, so like rolling a 20 on a 20 sided dice
+    if randint(1, 20) == 20:
+        print("\nA critical hit!\n")
+        damage = damage * 2
 
     # deal the damage
     target.current_hp -= damage
