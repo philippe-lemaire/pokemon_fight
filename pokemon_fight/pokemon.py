@@ -10,7 +10,7 @@ pikachu = Pokemon(
     80,
     120,
     "Electric",
-    [moves.tackle, moves.thunderbolt, moves.irontail],
+    [moves.tackle, moves.thunderbolt, moves.irontail, moves.thunderwave],
 )
 
 mudkip = Pokemon(
@@ -26,7 +26,7 @@ chimchar = Pokemon(
     100,
     120,
     "Fire",
-    [moves.ember, moves.tackle, moves.irontail],
+    [moves.ember, moves.tackle, moves.irontail, moves.willowisp],
 )
 
 rattata = Pokemon(
@@ -40,4 +40,16 @@ rattata = Pokemon(
     "Normal",
     [moves.bodyslam, moves.tackle, moves.watergun],
 )
-roster = [pikachu, mudkip, chimchar, rattata]
+
+bulbasaur = Pokemon(
+    "Bulbasaur",
+    120,
+    70,
+    90,
+    90,
+    80,
+    70,
+    "Grass",
+    [moves.sleeppowder, moves.bodyslam, moves.poisonpowder],
+)
+roster = [pikachu, mudkip, chimchar, rattata, bulbasaur]

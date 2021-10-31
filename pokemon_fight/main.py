@@ -1,7 +1,7 @@
 import random
 from time import sleep
 import pokemon as pkmn
-from damage import deal_damage
+from damage import deal_damage, apply_status_damage
 
 # Create the roster of Pokemon to choose from
 roster = pkmn.roster
@@ -61,6 +61,7 @@ while True:
     print(f"{first.name} moves first.")
     sleep(sleep_time)
     # first attack
+    # check for chance of paralysis
     print(f"{first.name} uses {first.next_move.name}.")
     # deal damage here
     deal_damage(first, last)
@@ -76,6 +77,17 @@ while True:
     # deal damage here
     deal_damage(last, first)
     sleep(sleep_time)
+    # check if first is ko, if yes, exit the loop
+    if first.current_hp <= 0:
+        print(f"{first.name} is KO. {last.name} won.")
+        break
+    # apply status damage if a pokemon has "Burn" or "Poison"
+    apply_status_damage(first)
+    # check if last is ko, if yes, exit the loop
+    if last.current_hp <= 0:
+        print(f"{last.name} is KO. {first.name} won.")
+        break
+    apply_status_damage(last)
     # check if first is ko, if yes, exit the loop
     if first.current_hp <= 0:
         print(f"{first.name} is KO. {last.name} won.")
