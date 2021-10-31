@@ -58,7 +58,6 @@ class Pokemon:
                 print("Invalid input")
                 selected_move = None
         self.next_move = self.moves[selected_move]
-        print(f"You selected {self.moves[selected_move].name}.")
 
     def cpu_select_move(self):
         """this method will be used by the CPU only"""
@@ -78,8 +77,8 @@ class Move:
         self.type = type.capitalize()
         self.desc = desc.capitalize()
 
-    def __str__(self):
+    def __repr__(self):
         return f"{self.name}. Base Power: {self.base_power}. Accuracy: {self.accuracy}%. PP: {self.max_pp}. Kind: {self.kind}. Type: {self.type}. {self.desc}."
 
-    def __repr__(self):
+    def __str__(self):
         return f"{self.name}. PP: {self.current_pp}/{self.max_pp}"
