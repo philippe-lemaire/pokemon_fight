@@ -67,7 +67,7 @@ class Pokemon:
 class Move:
     """Class used to model a move, such as Thunderbolt or Poison Powder"""
 
-    def __init__(self, name, base_power, pp, accuracy, kind, type, desc):
+    def __init__(self, name, base_power, pp, accuracy, kind, type):
         self.name = name.capitalize()
         self.base_power = base_power
         self.max_pp = pp
@@ -75,10 +75,9 @@ class Move:
         self.current_pp = pp
         self.kind = kind.capitalize()
         self.type = type.capitalize()
-        self.desc = desc.capitalize()
 
     def __repr__(self):
-        return f"{self.name}. Base Power: {self.base_power}. Accuracy: {self.accuracy}%. PP: {self.max_pp}. Kind: {self.kind}. Type: {self.type}. {self.desc}."
+        return f"{self.name}. Base Power: {self.base_power}. Accuracy: {self.accuracy}%. PP: {self.max_pp}. Kind: {self.kind}. Type: {self.type}."
 
     def __str__(self):
         return f"{self.name}. PP: {self.current_pp}/{self.max_pp}"
