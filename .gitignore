@@ -4,5 +4,6 @@
 .DS_Store
 raw_data/
 *.csv
+.python-version
 **/__pycache__/
 .env
