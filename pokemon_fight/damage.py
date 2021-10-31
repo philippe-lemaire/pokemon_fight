@@ -4,6 +4,9 @@ from random import randint
 def deal_damage(attacker, target):
     # compute attack side of the damage formula
     move = attacker.next_move
+    # remove 1 pp
+    move.current_pp -= 1
+    # check physical / special for damage calc
     if move.kind.capitalize() == "Physical":
         # Let's use int to get a whole number
         attack_power = move.base_power * attacker.attack / 100

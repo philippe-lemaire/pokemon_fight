@@ -57,6 +57,9 @@ class Pokemon:
             except ValueError:
                 print("Invalid input")
                 selected_move = None
+            if self.moves[selected_move].current_pp < 1:
+                print("This move has no Power Points left.")
+                selected_move = None
         self.next_move = self.moves[selected_move]
 
     def cpu_select_move(self):
