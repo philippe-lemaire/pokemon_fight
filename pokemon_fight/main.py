@@ -1,5 +1,6 @@
 import random
 import pokemon as pkmn
+from damage import deal_damage
 
 # Create the roster of Pokemon to choose from
 roster = [pkmn.pikachu, pkmn.mudkip]
@@ -44,16 +45,22 @@ while player.current_hp > 0 and cpu.current_hp > 0:
     if player.speed > cpu.speed:
         first = player
         last = cpu
-    elif cpu.speep > player.speep:
+    elif cpu.speed > player.speed:
         first = cpu
-        last = cpu
+        last = player
     else:
         mons = random.shuffle([player, cpu])
         first, last = mons
     print(f"{first.name} uses {first.next_move.name}.")
     # deal damage here
+    deal_damage(first, last)
     # check if last is ko, if yes, exit the loop
+    if last.current_hp <= 0:
+        break
     print(f"{last.name} uses {last.next_move.name}.")
     # deal damage here
+    deal_damage(last, first)
     # check if first is ko, if yes, exit the loop
+    if first.current_hp <= 0:
+        break
     print(separator)
