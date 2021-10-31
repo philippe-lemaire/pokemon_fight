@@ -19,3 +19,5 @@ irontail = Move(
     "Physical",
     "Steel",
 )
+
+bodyslam = Move("Body Slam", 80, 1, 100, "Physical", "Normal")

@@ -29,4 +29,15 @@ chimchar = Pokemon(
     [moves.ember, moves.tackle, moves.irontail],
 )
 
-roster = [pikachu, mudkip, chimchar]
+rattata = Pokemon(
+    "Rattata",
+    40,
+    90,
+    90,
+    40,
+    50,
+    130,
+    "Normal",
+    [moves.bodyslam, moves.tackle, moves.watergun],
+)
+roster = [pikachu, mudkip, chimchar, rattata]
