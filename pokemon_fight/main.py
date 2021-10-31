@@ -71,6 +71,7 @@ while True:
         break
 
     # slower pokemon's attack
+    print("")
     print(f"{last.name} uses {last.next_move.name}.")
     # deal damage here
     deal_damage(last, first)
