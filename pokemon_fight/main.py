@@ -4,7 +4,7 @@ import pokemon as pkmn
 from damage import deal_damage
 
 # Create the roster of Pokemon to choose from
-roster = [pkmn.pikachu, pkmn.mudkip]
+roster = pkmn.roster
 
 # Create a nice separator
 separator = "--------"
@@ -55,8 +55,12 @@ while True:
         first = cpu
         last = player
     else:
-        mons = random.shuffle([player, cpu])
+        mons = [player, cpu]
+        random.shuffle(mons)
         first, last = mons
+    print(f"{first.name} moves first.")
+    sleep(sleep_time)
+    # first attack
     print(f"{first.name} uses {first.next_move.name}.")
     # deal damage here
     deal_damage(first, last)
@@ -65,6 +69,8 @@ while True:
     if last.current_hp <= 0:
         print(f"{last.name} is KO. {first.name} won.")
         break
+
+    # slower pokemon's attack
     print(f"{last.name} uses {last.next_move.name}.")
     # deal damage here
     deal_damage(last, first)
@@ -73,3 +79,4 @@ while True:
     if first.current_hp <= 0:
         print(f"{first.name} is KO. {last.name} won.")
         break
+    print("Thank you for playing. Good bye.")

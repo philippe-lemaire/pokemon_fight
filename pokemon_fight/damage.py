@@ -1,3 +1,6 @@
+from random import randint
+
+
 def deal_damage(attacker, target):
     # compute attack side of the damage formula
     move = attacker.next_move
@@ -18,6 +21,13 @@ def deal_damage(attacker, target):
 
     # damage formula
     damage = int(attack_power * (1 - defense_power / 200))
+    # check for accuracy if the attack missed, we return something here to skip the rest of the function.
+    # We have no real value to return, so we can just return None
+    roll = randint(1, 100)
+    if roll > move.accuracy:
+        print(f"{attacker.name} missed.")
+        return None
+
     # deal the damage
     target.current_hp -= damage
     # print some feedback for the user
