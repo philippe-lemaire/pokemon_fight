@@ -50,6 +50,6 @@ bulbasaur = Pokemon(
     80,
     70,
     "Grass",
-    [moves.sleeppowder, moves.bodyslam, moves.poisonpowder],
+    [moves.vinewhip, moves.sleeppowder, moves.bodyslam, moves.poisonpowder],
 )
 roster = [pikachu, mudkip, chimchar, rattata, bulbasaur]

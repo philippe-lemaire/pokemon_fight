@@ -59,6 +59,8 @@ def deal_damage(attacker, target):
             target.speed = target.speed // 2
         if target.status == "Burn":
             target.attack == target.attack // 2
+        if target.status == "Sleep":
+            target.sleep_count = randint(1, 5)
     # print some feedback for the user
     if damage:
         print(

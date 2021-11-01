@@ -2,6 +2,7 @@ import random
 from time import sleep
 import pokemon as pkmn
 from damage import deal_damage, apply_status_damage
+from wake_up_check import wake_up_check
 
 # Create the roster of Pokemon to choose from
 roster = pkmn.roster
@@ -61,10 +62,11 @@ while True:
     print(f"{first.name} moves first.")
     sleep(sleep_time)
     # first attack
-    # check for chance of paralysis
-    print(f"{first.name} uses {first.next_move.name}.")
-    # deal damage here
-    deal_damage(first, last)
+    # check if the pokemon is asleep or wakes up
+    if wake_up_check(first):
+        print(f"{first.name} uses {first.next_move.name}.")
+        # deal damage here (the check for chance of paralysis is in the deal_damage function)
+        deal_damage(first, last)
     sleep(sleep_time)
     # check if last is ko, if yes, exit the loop
     if last.current_hp <= 0:
@@ -73,9 +75,11 @@ while True:
 
     # slower pokemon's attack
     print("")
-    print(f"{last.name} uses {last.next_move.name}.")
-    # deal damage here
-    deal_damage(last, first)
+    # check if the pokemon is asleep or wakes up
+    if wake_up_check(last):
+        print(f"{last.name} uses {last.next_move.name}.")
+        # deal damage here
+        deal_damage(last, first)
     sleep(sleep_time)
     # check if first is ko, if yes, exit the loop
     if first.current_hp <= 0:
