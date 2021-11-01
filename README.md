@@ -1,7 +1,7 @@
 # Pokemon Fight
 A simple text based Pokémon fighting games, for EM Lyon students.
 
-# Steps I took to make it
+## Steps I took to make it
 
 1. Create 2 classes to model Pokemon and Moves. Think about the attributes they need to function. Moves need at least a base power, but to model the game more closely, they also need a type, power points (PP) that are spent when the move is used, a kind (Physical, Special, or Status) and an accuracy value (some strong moves don't land 100% of the time). 
 1. Add a `__str__` method to the Move class showing what a player should see about the move when it's printed on screen.
@@ -16,13 +16,13 @@ A simple text based Pokémon fighting games, for EM Lyon students.
 Bonus points: check for accuracy. A move with 70 accuracy should have a 30% chance of missing. Apply the "Same Type Attack Bonus": if the attacker and its move have the same type, multipy the damage by 1.5. Add a crit chance. If the move connects, 5% of the time it should be a critical hit, and deal double damage. Print some message when that happens, ie : "A critical hit!"
 1. In your main loop, use the attack resolution function with the fastest pokemon as the attacker and the slowest as the target first, check if there's a ko, then use the attack resolution function again with the slowest pokemon as the attacker, check again for a ko. If there's no ko, the loop continues and you pick your next move.
 
-General Tips :
+## General Tips :
 
 1. Do all this step by step and have fun with it. This is absolutely doable with the basic notions we've seen in class. It can take you a while, don't try to do it all in one session. If you are stuck, go do something else and think about it during the day, you'll probably think of a solution yourself, while away from the computer. This means you should start the project as early as possible, to give you time.
-1. This is fully a text based interface, so add usefull prints to show the user (and yourself) what's going on: attacks useds, damage dealt, hp left, and so on.
+1. This is fully a text based interface, so add usefull prints to show the user (and yourself) what's going on: attacks used, damage dealt, hp left, status, and so on.
 1. As text will print very fast, it can be hard to read when playing. You can use the function time.sleep(1) (import time first) to make the game pause for a second at some points during the main loop.
 
-Extra stuff you can do when the basic loop is working:
+## Extra stuff you can do when the basic loop is working:
 
 1. Implement status moves, that don't deal damage directly
     - paralysis reduces target's speed by half, and add a 25% chance to not being able to use a move
