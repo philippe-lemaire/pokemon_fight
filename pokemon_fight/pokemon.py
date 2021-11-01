@@ -60,7 +60,7 @@ geodude = Pokemon(
     80,
     20,
     60,
-    70,
+    60,
     "Rock",
     [moves.earthquake, moves.rocktomb, moves.tackle],
 )
