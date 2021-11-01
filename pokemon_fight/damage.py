@@ -1,4 +1,5 @@
 from random import randint
+from type_effectiveness import double_effective, resists
 
 
 def deal_damage(attacker, target):
@@ -43,10 +44,18 @@ def deal_damage(attacker, target):
 
     # check for random chance of crit. It's a 5% chance, so like rolling a 20 on a 20 sided dice
     # but only if there is damage above 0. if damage allows us to check if damage is above 0
+    # we will apply type effectiveness here as well, stored in 2 dictionaries objects in another file we imported above
     if damage:
         if randint(1, 20) == 20:
             print("\nA critical hit!\n")
             damage = damage * 2
+        # check for type effectiveness
+        if target.type in double_effective.get(move.type, []):
+            damage = damage * 2
+            print("It's super effective!")
+        if move.type in resists.get(target.type, []):
+            damage = damage // 2
+            print("It's not very effective…")
 
     # deal the damage
     target.current_hp -= damage
@@ -58,7 +67,7 @@ def deal_damage(attacker, target):
         if target.status == "Paralysis":
             target.speed = target.speed // 2
         if target.status == "Burn":
-            target.attack == target.attack // 2
+            target.attack = target.attack // 2
         if target.status == "Sleep":
             target.sleep_count = randint(1, 5)
     # print some feedback for the user

@@ -52,4 +52,23 @@ bulbasaur = Pokemon(
     "Grass",
     [moves.vinewhip, moves.sleeppowder, moves.bodyslam, moves.poisonpowder],
 )
-roster = [pikachu, mudkip, chimchar, rattata, bulbasaur]
+
+geodude = Pokemon(
+    "Geodude",
+    100,
+    120,
+    80,
+    20,
+    60,
+    70,
+    "Rock",
+    [moves.earthquake, moves.rocktomb, moves.tackle],
+)
+roster = [
+    pikachu,
+    mudkip,
+    chimchar,
+    bulbasaur,
+    rattata,
+    geodude,
+]

@@ -25,7 +25,7 @@ class Pokemon:
         self.special_attack = special_attack
         self.special_defense = special_defense
         self.speed = speed
-        self.type = type.capitalize()
+        self.type = type
         self.status = ""
         self.attack_mod = 1
         self.defense_mod = 1
