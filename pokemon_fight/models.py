@@ -73,8 +73,8 @@ class Move:
     def __init__(self, name, base_power, status_affliction, pp, accuracy, kind, type):
         self.name = name.capitalize()
         self.base_power = base_power
-        self.max_pp = pp
-        self.accuracy = accuracy
+        self.max_pp = pp  # optional at first
+        self.accuracy = accuracy  # optional at first
         self.current_pp = pp
         self.kind = kind.capitalize()
         self.type = type.capitalize()
