@@ -16,6 +16,7 @@ class Pokemon:
         speed,
         type,
         moves,
+        level,
     ):
         self.name = name.capitalize()
         self.max_hp = hp
@@ -33,10 +34,11 @@ class Pokemon:
         self.special_defense_mod = 1
         self.speed_mod = 1
         self.moves = moves
+        self.level = level
         self.next_move = None
 
     def __str__(self):
-        return f"{self.name}: {self.current_hp}/{self.max_hp} {self.status}"
+        return f"{self.name}: LV {self.level} - {self.current_hp}/{self.max_hp} {self.status}"
 
     def __repr__(self):
         return f"Pokemon({self.name}, {self.max_hp}, {self.attack}, {self.defense}, {self.special_attack}, {self.special_defense}, {self.speed}, {self.type})"

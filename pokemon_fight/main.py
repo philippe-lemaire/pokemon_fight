@@ -19,7 +19,7 @@ selected_pkmn = None
 while selected_pkmn is None:
     print("Please select your Pokémon")
     for num, mon in enumerate(roster, 1):
-        print(num, mon.name)
+        print(f"{num}: {mon.name} LVL {mon.level}")
     selected_pkmn = input()
     try:
         selected_pkmn = int(selected_pkmn) - 1
@@ -40,7 +40,7 @@ print(f"The CPU selected {cpu.name}.")
 while True:
     print(separator)
     # print the current status
-    game_state = f"{player.name}: HP {player.current_hp}/{player.max_hp} {player.status}~~ {cpu.name}: HP {'{:.0%}'.format(cpu.current_hp/cpu.max_hp)}. {cpu.status}"
+    game_state = f"{player.name}: HP {player.current_hp}/{player.max_hp} {player.status} ~~  {cpu.name}: HP {'{:.0%}'.format(cpu.current_hp/cpu.max_hp)}. {cpu.status}"
     print(game_state)
     # let the player select a move
     print(separator)
