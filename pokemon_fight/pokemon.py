@@ -11,10 +11,11 @@ pikachu = Pokemon(
     120,
     "Electric",
     [moves.tackle, moves.thunderbolt, moves.irontail, moves.thunderwave],
+    10,
 )
 
 mudkip = Pokemon(
-    "Mudkip", 90, 60, 60, 70, 100, 120, "Water", [moves.tackle, moves.watergun]
+    "Mudkip", 90, 60, 60, 70, 100, 120, "Water", [moves.tackle, moves.watergun], 12
 )
 
 chimchar = Pokemon(
@@ -27,6 +28,7 @@ chimchar = Pokemon(
     120,
     "Fire",
     [moves.ember, moves.tackle, moves.irontail, moves.willowisp],
+    11,
 )
 
 rattata = Pokemon(
@@ -39,6 +41,7 @@ rattata = Pokemon(
     130,
     "Normal",
     [moves.bodyslam, moves.tackle, moves.watergun],
+    10,
 )
 
 bulbasaur = Pokemon(
@@ -51,6 +54,7 @@ bulbasaur = Pokemon(
     70,
     "Grass",
     [moves.vinewhip, moves.sleeppowder, moves.bodyslam, moves.poisonpowder],
+    9,
 )
 
 geodude = Pokemon(
@@ -63,6 +67,7 @@ geodude = Pokemon(
     60,
     "Rock",
     [moves.earthquake, moves.rocktomb, moves.tackle],
+    11,
 )
 roster = [
     pikachu,

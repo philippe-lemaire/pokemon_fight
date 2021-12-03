@@ -7,33 +7,39 @@ def deal_damage(attacker, target):
     move = attacker.next_move
     # remove 1 pp
     move.current_pp -= 1
+    base_power = move.base_power
     # check physical / special for damage calc
     if move.kind.capitalize() == "Physical":
-        attack_power = move.base_power * attacker.attack / 100
+        attack_stat = attacker.attack
     if move.kind.capitalize() == "Special":
-        attack_power = move.base_power * attacker.special_attack / 100
+        attack_stat = attacker.special_attack
 
-    if move.kind.capitalize() == "Status":
-        attack_power = 0
-        defense_power = 0
     # apply STAB (same type attack bonus)
     if move.type == attacker.type and move.kind in ["Physical", "Special"]:
-        attack_power = attack_power * 1.5
+        base_power = base_power * 1.5
 
     # Compute defense side
     if move.kind.capitalize() == "Physical":
-        defense_power = target.defense
+        defense_stat = target.defense
     if move.kind.capitalize() == "Special":
-        defense_power = target.special_defense
+        defense_stat = target.special_defense
 
     # damage formula. I use int on the result to get a whole number
-    damage = int(attack_power * (1 - defense_power / 200))
+    # skipped if move.kind == 'Status'
+    level_multiplier = 2 * attacker.level / 5 + 2
+    if move.kind.capitalize() == "Status":
+        damage = 0
+    else:
+        damage = int(
+            ((level_multiplier * base_power * attack_stat / defense_stat) / 50) + 2
+        )
 
     # check for accuracy if the attack missed, we return something here to skip the rest of the function.
     # We have no real value to return, so we can just return None
     roll = randint(1, 100)
     if roll > move.accuracy:
         print(f"{attacker.name}’s attack {move.name} missed.")
+        # exit the function with returning None
         return None
 
     # check for 25% chance of not attacking if paralysis. Return None in this case to skip the rest of the function.
@@ -43,7 +49,7 @@ def deal_damage(attacker, target):
             return None
 
     # check for random chance of crit. It's a 5% chance, so like rolling a 20 on a 20 sided dice
-    # but only if there is damage above 0. if damage allows us to check if damage is above 0
+    # but only if there is damage to deal. the if damage check allows us to check if damage is above 0
     # we will apply type effectiveness here as well, stored in 2 dictionaries objects in another file we imported above
     if damage:
         if randint(1, 20) == 20:
