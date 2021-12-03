@@ -78,7 +78,7 @@ class Move:
         self.current_pp = pp
         self.kind = kind.capitalize()
         self.type = type.capitalize()
-        self.status_affliction = status_affliction
+        self.status_affliction = status_affliction  # for status inflicting moves
 
     def __repr__(self):
         return f"{self.name}. Base Power: {self.base_power}. Accuracy: {self.accuracy}%. PP: {self.max_pp}. Kind: {self.kind}. Type: {self.type}."
