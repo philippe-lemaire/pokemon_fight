@@ -9,14 +9,14 @@ def deal_damage(attacker, target):
     move.current_pp -= 1
     # check physical / special for damage calc
     if move.kind.capitalize() == "Physical":
-        # Let's use int to get a whole number
         attack_power = move.base_power * attacker.attack / 100
     if move.kind.capitalize() == "Special":
         attack_power = move.base_power * attacker.special_attack / 100
-    # apply STAB (same type attack bonus)
+
     if move.kind.capitalize() == "Status":
         attack_power = 0
         defense_power = 0
+    # apply STAB (same type attack bonus)
     if move.type == attacker.type and move.kind in ["Physical", "Special"]:
         attack_power = attack_power * 1.5
 
@@ -26,7 +26,7 @@ def deal_damage(attacker, target):
     if move.kind.capitalize() == "Special":
         defense_power = target.special_defense
 
-    # damage formula
+    # damage formula. I use int on the result to get a whole number
     damage = int(attack_power * (1 - defense_power / 200))
 
     # check for accuracy if the attack missed, we return something here to skip the rest of the function.
