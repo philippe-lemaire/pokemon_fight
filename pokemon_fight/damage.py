@@ -24,12 +24,14 @@ def deal_damage(attacker, target):
     if move.kind.capitalize() == "Special":
         defense_stat = target.special_defense
 
-    # damage formula. I use int on the result to get a whole number
-    # skipped if move.kind == 'Status'
+    # the level of the attacking pokemon is used in the real damage formula from the games
     level_multiplier = 2 * attacker.level / 5 + 2
+
+    # skip the damage calculation and assign 0 to damage if move.kind == 'Status'
     if move.kind.capitalize() == "Status":
         damage = 0
     else:
+        # damage formula. I use int on the result to get a whole number
         damage = int(
             ((level_multiplier * base_power * attack_stat / defense_stat) / 50) + 2
         )
@@ -81,6 +83,7 @@ def deal_damage(attacker, target):
         print(
             f"{target.name} took damage: {'{:.0%}'.format(damage/target.max_hp)} of its total HP."
         )
+    return None
 
 
 def apply_status_damage(pkmn):
